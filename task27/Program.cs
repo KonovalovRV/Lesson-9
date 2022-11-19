@@ -3,15 +3,33 @@
 // M = 1; N = 5 -> "2, 4"
 // M = 4; N = 8 -> "4, 6, 8"
 
-void PrintEvenNatureNumbers(int minvalue, int maxvalue)
+int Prompt(string mes)
 {
-    if (minvalue >= maxvalue)
+    Console.WriteLine(mes);
+    int arg = Convert.ToInt32(Console.ReadLine());
+    return arg;
+}
+
+void PrintEvenNatureNumbers(int num1, int num2)
+{
+    if (num1 > num2)
     {
         return;
     }
-    System.Console.Write(minvalue + 1 + "  ");
-    PrintEvenNatureNumbers(minvalue + 1, maxvalue);
-    System.Console.WriteLine();
+    if (num1 % 2 == 0)
+    {
+        System.Console.Write(num1 + "  ");
+        PrintEvenNatureNumbers(num1 + 2, num2);
+    }
+    else
+    {
+        num1 += 1;
+        System.Console.Write(num1 + "  ");
+        PrintEvenNatureNumbers(num1 + 2, num2);
+    }
 }
+System.Console.WriteLine();
 
-PrintEvenNatureNumbers(0, 10);
+int minvalue = Prompt("Введите начальное значение промежутка -->   ");
+int maxvalue = Prompt("Введите конечное значение промежутка -->   ");
+PrintEvenNatureNumbers(minvalue, maxvalue);
